@@ -23,7 +23,7 @@ stages:
         displayName: 'dotnet build $(buildConfiguration)'
 - stage: Deploy
   jobs:
-  - job:  Build
+  - job:  Deploy
     pool:
       vmImage: 'ubuntu-18.04'
     steps:
