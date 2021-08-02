@@ -15,6 +15,10 @@ stages:
     pool:
       vmImage: 'ubuntu-18.04'
     steps:
+      - task: ServiceNow-DevOps-Agent-Job-Notification@1
+        inputs:
+          connectedServiceName: 'ServiceNowDevOps'
+          Phase: 'STARTED'
       - script: dotnet build --configuration $(buildConfiguration)
         displayName: 'dotnet build $(buildConfiguration)'
 - stage: Deploy
@@ -25,3 +29,7 @@ stages:
     steps:
       - script: dotnet build --configuration $(buildConfiguration)
         displayName: 'dotnet build $(buildConfiguration)'
+      - task: ServiceNow-DevOps-Agent-Job-Notification@1
+        inputs:
+          connectedServiceName: 'ServiceNowDevOps'
+          Phase: 'COMPLETED'
