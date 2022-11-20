@@ -21,7 +21,10 @@ jobs:
     name: Deploy
     needs: Explore-GitHub-Actions
     runs-on: ubuntu-latest
-    steps:     
+    steps:
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
       - name: ServiceNow Change
         uses: ServiceNow/servicenow-devops-change@v1.35.2
         with:
